@@ -21,4 +21,4 @@ For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Remaining
 
-Timer, animation and style.
+Timer, style and control user interation while animations.

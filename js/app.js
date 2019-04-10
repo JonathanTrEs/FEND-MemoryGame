@@ -7,6 +7,9 @@ let moves = 0;
 let cardsMatched = 0;
 let starsNumber = 3;
 
+// This array is for hide cards after a while
+let failCards = [];
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -55,20 +58,42 @@ function isEndGame(){
     }
 }
 
+function failAnimation() {
+    for(card of failCards){
+        card.classList.remove("fail");
+        hideCard(card);
+    }
+    failCards = [];
+}
+
 // Managed if the cards are matched or not
 function checkMatch(currentCard) {
-    hideCard(openCards[0]);
-    
     if(currentCard.firstElementChild.className == openCards[0].firstElementChild.className){
+        // Remove open and show from open card
+        hideCard(openCards[0]);
         // Match the cards
         currentCard.classList.add("match");
         openCards[0].classList.add("match");
+        
+        // Win Animation
+        currentCard.classList.add("bounce");
+        openCards[0].classList.add("bounce");
+
         // Delete the events for both cards
         currentCard.removeEventListener('click', cardClicked);
         openCards[0].removeEventListener('click', cardClicked);
         cardsMatched++;
         isEndGame();
     } else {
+        // Fail animation
+        showCard(currentCard);
+        currentCard.classList.add("fail");
+        openCards[0].classList.add("fail");
+
+        failCards.push(currentCard);
+        failCards.push(openCards[0]);
+        setTimeout(failAnimation, 1500);
+
         openCards[0].addEventListener('click', cardClicked);
     }
     openCards.pop()
@@ -129,8 +154,9 @@ function restart() {
         if(card.classList.contains("open") && card.classList.contains("show")){
             card.classList.remove("open");
             card.classList.remove("show");
-        } else if(card.classList.contains("match")) {
+        } else if(card.classList.contains("match") && card.classList.contains("bounce")) {
             card.classList.remove("match");
+            card.classList.remove("bounce");
         }
     }
 
