@@ -1,0 +1,53 @@
+.icon-svg {
+	display: block;
+    width: 100px;
+    height: 100px;
+}
+
+.open.show .knight,
+.match .knight {
+    background: url('../img/icons/knight.svg');
+    background-size: contain;
+}
+
+.open.show .magic,
+.match .magic {
+    background: url('../img/icons/magic.svg');
+    background-size: contain;
+}
+
+.open.show .map,
+.match .map {
+    background: url('../img/icons/map.svg');
+    background-size: contain;
+}
+
+.open.show .potion,
+.match .potion {
+    background: url('../img/icons/potion.svg');
+    background-size: contain;
+}
+
+.open.show .reaper,
+.match .reaper {
+    background: url('../img/icons/reaper.svg');
+    background-size: contain;
+}
+
+.open.show .sorceress,
+.match .sorceress {
+    background: url('../img/icons/sorceress.svg');
+    background-size: contain;
+}
+
+.open.show .spell-book,
+.match .spell-book {
+    background: url('../img/icons/spell_book.svg');
+    background-size: contain;
+}
+
+.open.show .sword,
+.match .sword {
+    background: url('../img/icons/sword.svg');
+    background-size: contain;
+}

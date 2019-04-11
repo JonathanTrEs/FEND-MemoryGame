@@ -10,6 +10,9 @@ let starsNumber = 3;
 // This array is for hide cards after a while
 let failCards = [];
 
+// Allow user click
+let allowClick = true;
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -22,6 +25,20 @@ function shuffle(array) {
         array[randomIndex] = temporaryValue;
     }
     return array;
+}
+
+// Fadeout function from https://stackoverflow.com/questions/29017379
+function fadeOutEffect(fadeTarget) {
+    var fadeEffect = setInterval(function () {
+        if (!fadeTarget.style.opacity) {
+            fadeTarget.style.opacity = 1;
+        }
+        if (fadeTarget.style.opacity > 0) {
+            fadeTarget.style.opacity -= 0.1;
+        } else {
+            clearInterval(fadeEffect);
+        }
+    }, 200);
 }
 
 // Show the shuffled cards on the html
@@ -64,6 +81,7 @@ function failAnimation() {
         hideCard(card);
     }
     failCards = [];
+    allowClick = true;
 }
 
 // Managed if the cards are matched or not
@@ -78,12 +96,20 @@ function checkMatch(currentCard) {
         // Win Animation
         currentCard.classList.add("bounce");
         openCards[0].classList.add("bounce");
+        
+        fadeOutEffect(currentCard);
+        fadeOutEffect(openCards[0]);
+
+        allowClick = false;
+        setTimeout(function(){
+            isEndGame();
+            allowClick = true;
+        }, 1500);
 
         // Delete the events for both cards
         currentCard.removeEventListener('click', cardClicked);
         openCards[0].removeEventListener('click', cardClicked);
         cardsMatched++;
-        isEndGame();
     } else {
         // Fail animation
         showCard(currentCard);
@@ -92,6 +118,7 @@ function checkMatch(currentCard) {
 
         failCards.push(currentCard);
         failCards.push(openCards[0]);
+        allowClick = false;
         setTimeout(failAnimation, 1500);
 
         openCards[0].addEventListener('click', cardClicked);
@@ -99,7 +126,7 @@ function checkMatch(currentCard) {
     openCards.pop()
 }
 
-// increment moves
+// Increment moves
 function increaseMoves() {
     moves++;
     document.getElementById("moves").innerText = moves;
@@ -113,13 +140,13 @@ function changeStar(classArray) {
 
 // Start rating
 function starsRating(){
-    if(moves > 24) {
+    if(moves > 20) {
         starsNumber = 0;
         changeStar(document.getElementById("star-one").classList);
-    } else if (moves > 16) {
+    } else if (moves > 15) {
         starsNumber = 1;
         changeStar(document.getElementById("star-two").classList);
-    } else if (moves > 8) {
+    } else if (moves > 10) {
         starsNumber = 2;
         changeStar(document.getElementById("star-three").classList);
     }
@@ -151,6 +178,7 @@ function restart() {
 
     // Reset cards
     for(card of cardArray){
+        card.style.opacity = 1;
         if(card.classList.contains("open") && card.classList.contains("show")){
             card.classList.remove("open");
             card.classList.remove("show");
@@ -186,6 +214,14 @@ function managedGrid(){
 
     // Add listeners to cards
     createEventsListeners(cardArray);
+
+    // Add listener to the body to control user click
+    var body = document.getElementsByTagName("body").item(0);
+    body.addEventListener('click', function(event){
+        if(!allowClick){
+            event.stopPropagation();
+        }
+    },true);
 
     // Add listeners to restart button
     document.getElementsByClassName("restart").item(0).addEventListener('click', function(){

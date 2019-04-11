@@ -21,4 +21,11 @@ For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Remaining
 
-Timer, style and control user interation while animations.
+Timer, style, victory modal and refactor some code.
+
+## Resources
+
+- Icon set from [IconFinder _by Chanut is Industries_](https://www.iconfinder.com/iconsets/fantasy-and-role-play-game-adventure-quest)
+- Javascript function for fade out effect from [Stackoverflow](https://stackoverflow.com/questions/29017379)
+- CSS bounce animation from [CSSeffectsSnippets](https://emilkowalski.github.io/css-effects-snippets/)
+- CSS shake animation from [CSS Tricks _by Sarah Drasner_](https://css-tricks.com/snippets/css/shake-css-keyframe-animation/)
