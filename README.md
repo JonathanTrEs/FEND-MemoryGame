@@ -21,7 +21,7 @@ For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Remaining
 
-Timer, style, victory modal and refactor some code.
+Timer, style, favicon, victory modal and refactor some code.
 
 ## Resources
 
@@ -29,3 +29,4 @@ Timer, style, victory modal and refactor some code.
 - Javascript function for fade out effect from [Stackoverflow](https://stackoverflow.com/questions/29017379)
 - CSS bounce animation from [CSSeffectsSnippets](https://emilkowalski.github.io/css-effects-snippets/)
 - CSS shake animation from [CSS Tricks _by Sarah Drasner_](https://css-tricks.com/snippets/css/shake-css-keyframe-animation/)
+- Background animation from [Particles.js](https://marcbruederlin.github.io/particles.js/)

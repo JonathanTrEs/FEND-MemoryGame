@@ -1,3 +1,10 @@
+// Initialize background from https://marcbruederlin.github.io/particles.js/
+window.onload = function() {
+    Particles.init({
+        selector: '.background',
+    });
+};
+
 // Create a list that holds all of your cards
 let cardArray = [...document.getElementsByClassName("card")];
 let openCards = [];
@@ -15,7 +22,8 @@ let allowClick = true;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -29,7 +37,7 @@ function shuffle(array) {
 
 // Fadeout function from https://stackoverflow.com/questions/29017379
 function fadeOutEffect(fadeTarget) {
-    var fadeEffect = setInterval(function () {
+    var fadeEffect = setInterval(function() {
         if (!fadeTarget.style.opacity) {
             fadeTarget.style.opacity = 1;
         }
@@ -43,30 +51,30 @@ function fadeOutEffect(fadeTarget) {
 
 // Show the shuffled cards on the html
 function addDeckShuffled(array) {
-	const fragment = document.createDocumentFragment();
-    for(card of array){
+    const fragment = document.createDocumentFragment();
+    for (card of array) {
         fragment.appendChild(card);
-	}
+    }
     document.getElementById("deck").appendChild(fragment);
 }
 
 // Show card
-function showCard(card){
+function showCard(card) {
     let classArray = card.classList;
     classArray.add("open");
     classArray.add("show");
 }
 
 // Hide card
-function hideCard(card){
+function hideCard(card) {
     let classArray = card.classList;
     classArray.remove("open");
     classArray.remove("show");
 }
 
 // Check is all the cards are matched
-function isEndGame(){
-    if(cardsMatched == 8) {
+function isEndGame() {
+    if (cardsMatched == 8) {
         document.getElementsByClassName("container").item(0).style.display = "none";
 
         let winMessage = `Win in ${moves} moves and ${starsNumber} stars.`;
@@ -76,7 +84,7 @@ function isEndGame(){
 }
 
 function failAnimation() {
-    for(card of failCards){
+    for (card of failCards) {
         card.classList.remove("fail");
         hideCard(card);
     }
@@ -86,22 +94,22 @@ function failAnimation() {
 
 // Managed if the cards are matched or not
 function checkMatch(currentCard) {
-    if(currentCard.firstElementChild.className == openCards[0].firstElementChild.className){
+    if (currentCard.firstElementChild.className == openCards[0].firstElementChild.className) {
         // Remove open and show from open card
         hideCard(openCards[0]);
         // Match the cards
         currentCard.classList.add("match");
         openCards[0].classList.add("match");
-        
+
         // Win Animation
         currentCard.classList.add("bounce");
         openCards[0].classList.add("bounce");
-        
+
         fadeOutEffect(currentCard);
         fadeOutEffect(openCards[0]);
 
         allowClick = false;
-        setTimeout(function(){
+        setTimeout(function() {
             isEndGame();
             allowClick = true;
         }, 1500);
@@ -139,8 +147,8 @@ function changeStar(classArray) {
 }
 
 // Start rating
-function starsRating(){
-    if(moves > 20) {
+function starsRating() {
+    if (moves > 20) {
         starsNumber = 0;
         changeStar(document.getElementById("star-one").classList);
     } else if (moves > 15) {
@@ -153,8 +161,8 @@ function starsRating(){
 }
 
 // Control the logic behind the match of cards
-function cardClicked () {
-    if(openCards.length){
+function cardClicked() {
+    if (openCards.length) {
         increaseMoves();
         starsRating()
         checkMatch(this);
@@ -167,7 +175,7 @@ function cardClicked () {
 
 // Create events listeners for the cards
 function createEventsListeners(array) {
-    for(card of array){        
+    for (card of array) {
         card.addEventListener('click', cardClicked);
     }
 }
@@ -177,12 +185,12 @@ function restart() {
     openCards = [];
 
     // Reset cards
-    for(card of cardArray){
+    for (card of cardArray) {
         card.style.opacity = 1;
-        if(card.classList.contains("open") && card.classList.contains("show")){
+        if (card.classList.contains("open") && card.classList.contains("show")) {
             card.classList.remove("open");
             card.classList.remove("show");
-        } else if(card.classList.contains("match") && card.classList.contains("bounce")) {
+        } else if (card.classList.contains("match") && card.classList.contains("bounce")) {
             card.classList.remove("match");
             card.classList.remove("bounce");
         }
@@ -190,7 +198,7 @@ function restart() {
 
     //Reset stars
     let starsArray = document.getElementsByClassName("stars").item(0).children;
-    for(star of starsArray){
+    for (star of starsArray) {
         star.firstElementChild.classList.remove("fa-star-o");
         star.firstElementChild.classList.add("fa-star");
     }
@@ -204,27 +212,27 @@ function restart() {
 }
 
 // Main function of the game
-function managedGrid(){
+function managedGrid() {
     // Hide victory message
     document.getElementById("victory-modal").style.display = "none";
 
     // Shuffle the array and update the page
     cardArray = shuffle(cardArray);
- 	addDeckShuffled(cardArray);
+    addDeckShuffled(cardArray);
 
     // Add listeners to cards
     createEventsListeners(cardArray);
 
     // Add listener to the body to control user click
     var body = document.getElementsByTagName("body").item(0);
-    body.addEventListener('click', function(event){
-        if(!allowClick){
+    body.addEventListener('click', function(event) {
+        if (!allowClick) {
             event.stopPropagation();
         }
-    },true);
+    }, true);
 
     // Add listeners to restart button
-    document.getElementsByClassName("restart").item(0).addEventListener('click', function(){
+    document.getElementsByClassName("restart").item(0).addEventListener('click', function() {
         restart();
     });
 }
