@@ -2,6 +2,7 @@
 window.onload = function() {
     Particles.init({
         selector: '.background',
+        color: '#e25822'
     });
 };
 
@@ -233,6 +234,11 @@ function managedGrid() {
 
     // Add listeners to restart button
     document.getElementsByClassName("restart").item(0).addEventListener('click', function() {
+        restart();
+    });
+
+    // Add listener to play again button
+    document.getElementById("play-again").addEventListener('click', function() {
         restart();
     });
 }
