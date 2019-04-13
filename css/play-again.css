@@ -118,3 +118,28 @@ a {
     top: 0.5rem;
     left: 0.35rem;
 }
+
+@media screen and (max-width: 675px){
+    .btn {
+        color: white;
+    }
+
+    .btn::before,
+    .btn::after {
+        top: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: 0;
+        -webkit-animation: none;
+        animation: none;
+    }
+
+    .btn::after {
+        left: 0rem;
+    }
+
+    .btn::before {
+        top: 0.5rem;
+        left: 0.35rem;
+    }
+}

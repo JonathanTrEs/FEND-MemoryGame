@@ -1,53 +1,53 @@
 .icon-svg {
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 80%;
+    height: 80%;
 }
 
 .open.show .knight,
 .match .knight {
-    background: url('../img/icons/knight.svg');
+    background: url('../img/icons/knight.svg') no-repeat center center;
     background-size: contain;
 }
 
 .open.show .magic,
 .match .magic {
-    background: url('../img/icons/magic.svg');
+    background: url('../img/icons/magic.svg') no-repeat center center;
     background-size: contain;
 }
 
 .open.show .map,
 .match .map {
-    background: url('../img/icons/map.svg');
+    background: url('../img/icons/map.svg') no-repeat center center;
     background-size: contain;
 }
 
 .open.show .potion,
 .match .potion {
-    background: url('../img/icons/potion.svg');
+    background: url('../img/icons/potion.svg') no-repeat center center;
     background-size: contain;
 }
 
 .open.show .reaper,
 .match .reaper {
-    background: url('../img/icons/reaper.svg');
+    background: url('../img/icons/reaper.svg') no-repeat center center;
     background-size: contain;
 }
 
 .open.show .sorceress,
 .match .sorceress {
-    background: url('../img/icons/sorceress.svg');
+    background: url('../img/icons/sorceress.svg') no-repeat center center;
     background-size: contain;
 }
 
 .open.show .spell-book,
 .match .spell-book {
-    background: url('../img/icons/spell_book.svg');
+    background: url('../img/icons/spell_book.svg') no-repeat center center;
     background-size: contain;
 }
 
 .open.show .sword,
 .match .sword {
-    background: url('../img/icons/sword.svg');
+    background: url('../img/icons/sword.svg') no-repeat center center;
     background-size: contain;
 }
