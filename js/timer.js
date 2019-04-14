@@ -1,8 +1,8 @@
 /* 
-* Timer from https://codepen.io/mythicalpizza/pen/WvdeJG
-* With some modificaitons
-*/
-let min,sec,ms,count, malt, salt, msalt;
+ * Timer from https://codepen.io/mythicalpizza/pen/WvdeJG
+ * With some modificaitons
+ */
+let min, sec, ms, count, malt, salt, msalt;
 
 function refreshTimer(time) {
     document.getElementById("timer").innerText = time;
@@ -43,10 +43,10 @@ function padTimer(time) {
     return temp;
 }
 
-function resetTimer(){
-  document.getElementById("timer").innerText = "00:00:00";
+function resetTimer() {
+    document.getElementById("timer").innerText = "00:00:00";
 }
 
-function stopTimer(){
-  clearInterval(count);
+function stopTimer() {
+    clearInterval(count);
 }

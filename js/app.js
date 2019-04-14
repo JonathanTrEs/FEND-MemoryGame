@@ -168,7 +168,7 @@ function cardClicked() {
         starsRating()
         checkMatch(this);
     } else {
-        if(moves === 0){
+        if (moves === 0) {
             startTimer();
         }
         showCard(this);
@@ -186,7 +186,7 @@ function createEventsListeners(array) {
 
 // Reset the game
 function restart() {
-    
+
     // Control timer
     stopTimer();
     resetTimer();

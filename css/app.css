@@ -17,7 +17,7 @@ body {
 }
 
 body {
-    background: url(../img/background/deck-background.svg) no-repeat center center fixed; 
+    background: url(../img/background/deck-background.svg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -223,17 +223,17 @@ header {
     z-index: 0;
 }
 
-@media screen and (max-width: 345px){
+@media screen and (max-width: 345px) {
     .score-panel {
         width: 90%;
     }
 }
 
-@media screen and (min-width: 415px) and (max-width: 675px){
+@media screen and (min-width: 415px) and (max-width: 675px) {
     .deck {
         padding: auto;
     }
-    
+
     .card {
         flex: 0 21%;
         min-height: 3em;
@@ -245,7 +245,7 @@ header {
     }
 }
 
-@media screen and (max-width: 675px){
+@media screen and (max-width: 675px) {
     .deck {
         width: auto;
         min-height: 480px;

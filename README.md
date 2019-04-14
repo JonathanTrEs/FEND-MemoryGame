@@ -2,7 +2,9 @@
 
 ## Contributing
 
-This code was implemented usign the starter code for _all_ Udacity students provided _by Udacity_
+This code was implemented usign the starter code for _all_ Udacity students provided _by Udacity_.
+
+The starter code can be found in [GitHub | Udacity](https://github.com/udacity/fend-project-memory-game)
 
 ## How to
 
