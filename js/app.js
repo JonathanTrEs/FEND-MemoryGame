@@ -78,7 +78,7 @@ function isEndGame() {
     if (cardsMatched == 8) {
         document.getElementsByClassName("container").item(0).style.display = "none";
 
-        let winMessage = `Win in ${moves} moves and ${starsNumber} stars.`;
+        let winMessage = `Win in ${moves} moves with ${starsNumber} stars in ${document.getElementById("timer").innerText}`;
         document.getElementById("victory-message").innerText = winMessage;
         document.getElementById("victory-modal").style.display = "block";
     }
@@ -168,6 +168,9 @@ function cardClicked() {
         starsRating()
         checkMatch(this);
     } else {
+        if(moves === 0){
+            startTimer();
+        }
         showCard(this);
         this.removeEventListener('click', cardClicked);
         openCards.push(this);
@@ -183,6 +186,11 @@ function createEventsListeners(array) {
 
 // Reset the game
 function restart() {
+    
+    // Control timer
+    stopTimer();
+    resetTimer();
+
     openCards = [];
 
     // Reset cards
@@ -225,7 +233,7 @@ function managedGrid() {
     createEventsListeners(cardArray);
 
     // Add listener to the body to control user click
-    var body = document.getElementsByTagName("body").item(0);
+    let body = document.getElementsByTagName("body").item(0);
     body.addEventListener('click', function(event) {
         if (!allowClick) {
             event.stopPropagation();
