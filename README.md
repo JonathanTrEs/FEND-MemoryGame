@@ -2,9 +2,7 @@
 
 ## Contributing
 
-This code is the starter code for _all_ Udacity students.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+This code was implemented usign the starter code for _all_ Udacity students provided _by Udacity_
 
 ## How to
 
@@ -23,4 +21,4 @@ _Jonathan Trujillo Estevez_
 - CSS shake animation from [CSS Tricks _by Sarah Drasner_](https://css-tricks.com/snippets/css/shake-css-keyframe-animation/)
 - Background animation from [Particles.js](https://marcbruederlin.github.io/particles.js/)
 - CSS cta animation from [Codemyui](https://codemyui.com/attention-grabbing-cta-button-animation/)
-- Vanilla JS Tiemr from [Codepen](https://codepen.io/mythicalpizza/pen/WvdeJG)
+- Vanilla JS Timer from [Codepen](https://codepen.io/mythicalpizza/pen/WvdeJG)
